@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 
 const Input = ({ input, setInput, handleOnClick }) => {
     return (
-        <div className="backdrop-blur-md bg-transparent bg-opacity-20 rounded p-2 w-3/4 max-w-md m-2 h-12 shadow-md shadow-black flex items-center top-0 fixed">
+        <div className="backdrop-blur-lg  bg-white bg-opacity-20 rounded p-2 w-3/4 max-w-md m-2 h-12 shadow-md shadow-black flex items-center top-0 fixed">
             <form onSubmit={(e) => { e.preventDefault(); handleOnClick(); }} className="flex items-center w-full">
                 <input
                     type="text"

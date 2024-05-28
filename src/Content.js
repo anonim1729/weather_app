@@ -10,7 +10,7 @@ const Content = ({ weather, place }) => {
     }, [weather]);
 
     return (
-        <main className="backdrop-blur-md bg-transparent bg-opacity-20 rounded p-4 w-3/4 max-w-md m-2 shadow-md shadow-black text-white h-2/3 flex flex-col justify-evenly">
+        <main className="backdrop-blur-lg bg-transparent bg-opacity-20 rounded p-4 w-3/4 max-w-md m-2 shadow-md shadow-black text-white h-2/3 flex flex-col justify-evenly">
             {weather && weather.main ? (
                 <div className='flex flex-col justify-evenly h-full'>
                     <h1 className="text-center text-2xl">{place.charAt(0).toUpperCase() + place.slice(1)}</h1>

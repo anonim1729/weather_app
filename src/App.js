@@ -4,7 +4,7 @@ import Content from './Content';
 
 function App() {
   const GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct?';
-  const API_KEY = '169e7ddbc338e6252206a7dbb093739a';
+  const API_KEY = "169e7ddbc338e6252206a7dbb093739a";
   const WET_URL = 'https://api.openweathermap.org/data/2.5/weather?'
   const [place, setPlace] = useState('bengaluru');
   const [input, setInput] = useState('');
@@ -36,7 +36,7 @@ function App() {
     }
 
     (async () => { await fetchLonLat() })();
-  }, [place])
+  }, [place, API_KEY])
 
   const handleOnClick = () => {
     setInput('');
