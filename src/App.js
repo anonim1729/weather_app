@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Input from './Input';
+import Content from './Content';
 
 function App() {
+  const GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct?';
+  const API_KEY = '169e7ddbc338e6252206a7dbb093739a';
+  const WET_URL = 'https://api.openweathermap.org/data/2.5/weather?'
+  const [place, setPlace] = useState('bengaluru');
+  const [input, setInput] = useState('');
+  const [currentWeather, setCurrentWeather] = useState({});
+
+  useEffect(() => {
+    const fetchWeather = async (lat, lon) => {
+      try {
+        const response = await fetch(`${WET_URL}lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+        if (!response.ok) throw Error("Something went wrong");
+        const weather = await response.json();
+        console.log(weather);
+        setCurrentWeather(weather);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    const fetchLonLat = async () => {
+      try {
+        const response = await fetch(`${GEO_URL}q=${place}&limit=1&appid=${API_KEY}`);
+        if (!response.ok) throw Error("Something went wrong");
+        const data = await response.json();
+        console.log(data);
+        await fetchWeather(data[0].lat, data[0].lon);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    (async () => { await fetchLonLat() })();
+  }, [place])
+
+  const handleOnClick = () => {
+    setInput('');
+    setPlace(input);
+    console.log(currentWeather);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col justify-center items-center h-screen bg-cover bg-fixed font-sans" style={{ backgroundImage: 'url("/background.jpg")' }}>
+      <Input
+        input={input}
+        setInput={setInput}
+        handleOnClick={handleOnClick}
+      />
+      <Content
+        weather={currentWeather}
+        place={place}
+      />
     </div>
   );
 }
