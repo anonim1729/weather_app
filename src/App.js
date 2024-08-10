@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import Input from './Input';
 import Content from './Content';
+import MapComponent from './MapComponent';
 
 function App() {
   const GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct?';
-  const API_KEY = "169e7ddbc338e6252206a7dbb093739a";
+  const API_KEY = "c8c3ac35a6a34de24625786c71a43428";
   const WET_URL = 'https://api.openweathermap.org/data/2.5/weather?'
   const [place, setPlace] = useState('bengaluru');
   const [input, setInput] = useState('');
@@ -55,6 +56,7 @@ function App() {
         weather={currentWeather}
         place={place}
       />
+      <MapComponent />
     </div>
   );
 }
