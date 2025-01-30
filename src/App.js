@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Input from './Input';
 import Content from './Content';
-import MapComponent from './MapComponent';
 
 function App() {
   const GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct?';
@@ -56,7 +55,6 @@ function App() {
         weather={currentWeather}
         place={place}
       />
-      <MapComponent />
     </div>
   );
 }
