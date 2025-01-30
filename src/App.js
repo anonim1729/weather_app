@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import Input from './Input';
 import Content from './Content';
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
 function App() {
   const GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct?';
-  const API_KEY = "c8c3ac35a6a34de24625786c71a43428";
+  const API_KEY = apiKey;
   const WET_URL = 'https://api.openweathermap.org/data/2.5/weather?'
   const [place, setPlace] = useState('bengaluru');
   const [input, setInput] = useState('');
